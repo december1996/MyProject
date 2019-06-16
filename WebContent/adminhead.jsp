@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%  String na=null;  
+ 	na=(String)session.getAttribute("lgin");
+ 	if(na==null)
+ 		{response.sendRedirect("login.html");}
+ %>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar am-topbar-inverse admin-header">
+  <div class="am-topbar-brand">
+    <strong>安全附件</strong> <small>管理系统</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}">
+  <span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span>欢迎您！${user.username} <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="admin.jsp"><span class="am-icon-cog"></span> 修改密码</a></li>
+          <li><a href="exitServlet"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        <li><a href="admin.jsp"><span class="am-icon-home"></span>主页</a></li>
+        <li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 系统管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">           
+            <li><a href="user.jsp"><span class="am-icon-calendar"></span>用户管理</a></li>
+            <li><a href="equipment.jsp"><span class="am-icon-calendar"></span>设备管理</a></li>
+            <li><a href="accessory.jsp"><span class="am-icon-calendar"></span>安全附件管理</a></li>
+          </ul>
+        </li>
+        <li><a href="service.jsp"><span class="am-icon-home"></span>业务查询</a></li>
+      </ul>
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> 公告</p>
+		   <p>您好!欢迎来到安全附件管理系统</p>
+        </div>
+      </div>
+    </div>
+  </div>

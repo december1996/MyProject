@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>安全附件管理</title>
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+  <script src="assets/js/jquery.serializejson.min.js"></script>
+<title>Insert title here</title>
+<script>
+		var shuzhi=1;
+		$(function(){
+			$("#btn").button().on("click",function(){
+				$("#add-accessory-modal").dialog({
+				      resizable: false,
+				      modal: true,
+				      buttons: {
+				        "提交": function() {
+				          add();
+				        },
+				        "取消": function() {
+				          $(this).dialog("close");
+				        },
+				      },
+				    });			
+			})			
+		});
+		function add(){
+			$("#add-accessory-modal").dialog("close");
+				showMsg("测试成功");
+				shuzhi=shuzhi+1;
+				document.getElementById('sz').innerHTML= shuzhi;
+		};
+		  function showMsg(text) {
+		      $("#msg-modal p").text(''); // 每次载入前先清空显示区域，防止显示之前的信息
+		      $("#msg-modal p").text(text);
+		      $("#msg-modal").dialog({
+		        modal: true,
+		      });
+		      // 2s后消失
+		      setTimeout(function() {
+		        $("#msg-modal").dialog("close")
+		      },2000);
+		   };
+	</script>
+</head>
+<body>
+      <!-- 添加附件模态框 -->
+      <div id="add-accessory-modal" title="添加附件" style="display:none;">
+      <form id="add-accessory-form">
+        <table class="modal-tbl">
+          <tr><td>附件编号</td><td><input type="text" name="id"></td></tr>
+          <tr><td>所属设备</td><td><input type="text" name="equipment"></td></tr>
+          <tr><td>附件种类</td><td><input type="text" name="variety"></td></tr>
+          <tr><td>检查周期(月)</td><td><input type="text" name="period"></td></tr>
+          <tr><td>上次检查时间</td><td><input type="text" name="lastTime"></td></tr>
+          <tr><td>状态</td><td><input type="text" name="state"></td></tr>
+        </table>
+      </form>
+  	  </div>
+  	    	  <div id="msg-modal" title="提示" style="display:none">
+  	  	<p></p>
+  	  </div>
+  	  <p id="sz"></p>
+	<a id="btn">按钮</a>
+</body>
+</html>
